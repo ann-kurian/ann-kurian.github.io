@@ -210,6 +210,28 @@
 
   /* hero-right removed — layout is now single column */
 
+  .nav-hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+  }
+  .nav-hamburger span { display: block; width: 22px; height: 2px; background: var(--navy); border-radius: 2px; transition: all 0.2s; }
+  .nav-mobile-open .nav-hamburger span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .nav-mobile-open .nav-hamburger span:nth-child(2) { opacity: 0; }
+  .nav-mobile-open .nav-hamburger span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+  .nav-mobile-open .nav-links {
+    display: flex !important; flex-direction: column;
+    position: fixed; top: 57px; left: 0; right: 0;
+    background: rgba(245,240,232,0.98); backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    padding: 16px 24px 24px; gap: 4px; z-index: 99;
+  }
+  .nav-mobile-open .nav-links a { font-size: 15px; padding: 10px 0; border-bottom: 1px solid var(--border); display: block; }
+
   /* ── SECTION BASE ────────────────────────────────────────────────────────── */
   section { padding: 100px 60px; }
   .section-label {
@@ -684,20 +706,109 @@
   }
 
   /* ── RESPONSIVE ──────────────────────────────────────────────────────────── */
+
+  /* Tablet — 768px to 900px */
   @media (max-width: 900px) {
     nav { padding: 16px 24px; }
     .nav-links { display: none; }
+    .nav-hamburger { display: flex; }
+
+    /* Hero */
     .hero { padding: 100px 24px 72px; }
-    section { padding: 72px 24px; }
-    .projects-header { grid-template-columns: 1fr; gap: 20px; }
-    .skills-grid { grid-template-columns: 1fr 1fr; }
+    .hero-name { font-size: 52px; }
+    .hero-title { font-size: 18px; }
+    .hero-bio, .hero-about { font-size: 15px; max-width: 100%; }
+    .hero-divider { margin: 20px 0; }
+    .hero-tags { gap: 6px; }
+    .tag { font-size: 10px; padding: 4px 10px; }
+    .hero-actions { flex-direction: column; gap: 10px; }
+    .btn-primary, .btn-secondary { width: 100%; justify-content: center; }
+
+    /* Sections */
+    section { padding: 60px 24px; }
+    .section-title { font-size: 28px; }
+
+    /* Projects */
+    .projects-header { grid-template-columns: 1fr; gap: 16px; }
+    .projects-grid { grid-template-columns: 1fr; gap: 2px; }
+    .category-tabs { overflow-x: auto; flex-wrap: nowrap; padding-bottom: 4px; }
+    .category-tabs::-webkit-scrollbar { display: none; }
+    .tab-btn { white-space: nowrap; font-size: 12px; padding: 10px 14px; }
+
+    /* Skills */
+    .skills-para p { font-size: 15px; }
+
+    /* Education */
     .edu-grid { grid-template-columns: 1fr; }
+
+    /* Timeline */
     .timeline { grid-template-columns: 1fr; }
-    .timeline-left { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.08); padding: 24px 0; }
+    .timeline-left { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.08); padding: 20px 0; }
     .timeline-left::after { display: none; }
-    .timeline-right { padding: 24px 0; }
-    .about-grid { grid-template-columns: 1fr; gap: 48px; }
+    .timeline-right { padding: 20px 0; }
+
+    /* About */
+    .about-grid { grid-template-columns: 1fr; gap: 40px; }
+    .contact-block { padding: 28px 24px; }
+
+    /* Footer */
     footer { flex-direction: column; gap: 8px; text-align: center; padding: 24px; }
+  }
+
+  /* Mobile — up to 480px */
+  @media (max-width: 480px) {
+    nav { padding: 14px 16px; }
+    .nav-logo { font-size: 15px; }
+
+    /* Hero */
+    .hero { padding: 88px 16px 60px; }
+    .hero-eyebrow { font-size: 10px; margin-bottom: 14px; }
+    .hero-name { font-size: 40px; line-height: 1.05; }
+    .hero-title { font-size: 16px; margin-bottom: 24px; }
+    .hero-bio { font-size: 14px; line-height: 1.75; }
+    .hero-about { font-size: 14px; line-height: 1.75; }
+    .hero-meta { gap: 16px; }
+    .meta-value { font-size: 13px; }
+
+    /* Sections */
+    section { padding: 48px 16px; }
+    .section-label { font-size: 10px; }
+    .section-title { font-size: 24px; }
+    .section-sub { font-size: 14px; }
+
+    /* Project cards */
+    .project-card { padding: 24px 20px; }
+    .project-title { font-size: 18px; }
+    .project-desc { font-size: 13px; }
+    .project-finding { font-size: 12px; padding: 10px 12px; }
+    .project-links { flex-direction: column; gap: 8px; }
+    .project-link { font-size: 12px; }
+
+    /* Category tabs — scrollable on mobile */
+    .category-tabs { gap: 2px; }
+    .tab-btn { font-size: 11px; padding: 8px 12px; }
+
+    /* Experience timeline */
+    .timeline-company { font-size: 16px; }
+    .timeline-role { font-size: 13px; }
+    .timeline-bullets li { font-size: 13px; padding-left: 14px; }
+    .timeline-period { font-size: 10px; }
+
+    /* Education */
+    .edu-card { padding: 24px 20px; }
+    .edu-degree { font-size: 15px; }
+
+    /* About */
+    .about-text p { font-size: 14px; }
+    .community-text { font-size: 13px; }
+    .contact-title { font-size: 20px; }
+    .contact-link { font-size: 13px; padding: 10px 12px; }
+    .cert-item { font-size: 12px; }
+
+    /* Footer */
+    footer { padding: 20px 16px; }
+    .footer-name { font-size: 14px; }
+    .footer-note { font-size: 10px; }
   }
 </style>
 </head>
@@ -706,13 +817,16 @@
 <!-- NAVIGATION -->
 <nav>
   <a href="#" class="nav-logo">Ann Mary Kurian</a>
-  <ul class="nav-links">
+  <ul class="nav-links" id="nav-links">
     <li><a href="#projects">Work</a></li>
     <li><a href="#experience">Experience</a></li>
     <li><a href="#education">Education</a></li>
     <li><a href="#about">About</a></li>
     <li><a href="mailto:amkurian@dons.usfca.edu">Contact</a></li>
   </ul>
+  <button class="nav-hamburger" id="nav-hamburger" aria-label="Open menu">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
 
 <!-- HERO -->
@@ -953,7 +1067,7 @@
   <p class="section-sub reveal">A mix of technical depth and business instinct — built across consulting, analytics, and strategy work.</p>
   <div class="skills-para reveal">
     <p>
-      I bring a strong technical foundation across SQL, R, Python, Excel, and Tableau — applied to KPI tracking, dashboard development, performance reporting, cross-functional planning, and process improvement. I work with a high degree of ownership and attention to detail, and I'm equally comfortable in high-pressure, time-sensitive environments as I am in structured, long-horizon planning work. Colleagues and faculty alike have described me as professional, resilient, and committed to excellence — someone who brings both rigour and genuine curiosity to every problem.
+      I bring a strong technical foundation across SQL, R, Python, Excel, and Tableau — applied to KPI tracking, dashboard development, performance reporting, cross-functional planning, and process improvement. I work with a high degree of ownership and attention to detail, and I'm equally comfortable in high-pressure, time-sensitive environments as I am in structured, long-horizon planning work. Senior leadership and faculty alike have described me as professional, resilient, and committed to excellence — someone who brings both rigour and genuine curiosity to every problem.
     </p>
   </div>
 </section>
@@ -1072,6 +1186,18 @@
 </footer>
 
 <script>
+  // ── HAMBURGER MENU ────────────────────────────────────────────────────────
+  const hamburger = document.getElementById('nav-hamburger');
+  const navLinks  = document.getElementById('nav-links');
+  hamburger.addEventListener('click', () => {
+    document.body.classList.toggle('nav-mobile-open');
+  });
+  navLinks.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      document.body.classList.remove('nav-mobile-open');
+    });
+  });
+
   // ── TAB FILTER ────────────────────────────────────────────────────────────
   function filterProjects(cat, btn) {
     document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
