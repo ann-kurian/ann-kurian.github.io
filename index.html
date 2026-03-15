@@ -889,12 +889,11 @@
     <div class="project-card visible" data-cat="cs">
       <span class="project-category-badge">Customer Success</span>
       <h3 class="project-title">Customer Success Early-Warning System</h3>
-      <p class="project-desc">A live, interactive health scoring dashboard built on statistically generated account data derived from the IBM Telco Churn dataset (Kaggle, n=7,043). Scores 100 B2B SaaS accounts using a composite health model, surfaces a 90-day renewal pipeline, and provides an AI-powered recommendation engine for CS intervention.</p>
+      <p class="project-desc">A live, interactive health scoring dashboard built on statistically generated account data derived from the IBM Telco Churn dataset (Kaggle, n=7,043). Scores 100 B2B SaaS accounts using a composite health model, surfaces a 90-day renewal pipeline, and includes a pre-built CS strategy recommendation engine grounded in the portfolio data.</p>
       <div class="project-finding">"Month-to-month accounts churn at 3× the rate of annual contracts — and accounts using 5+ features have 2.4× higher health scores."</div>
       <div class="project-tools">
         <span class="tool-badge">HTML / JS</span>
         <span class="tool-badge">Chart.js</span>
-        <span class="tool-badge">Claude API</span>
         <span class="tool-badge">Health Scoring Model</span>
         <span class="tool-badge">IBM Telco Churn</span>
       </div>
@@ -1204,8 +1203,14 @@
     document.querySelectorAll('.project-card').forEach(card => {
       if (cat === 'all' || card.dataset.cat === cat) {
         card.classList.add('visible');
+        card.style.opacity = '1';
+        card.style.transform = 'translateY(0)';
+        card.style.display = '';
       } else {
         card.classList.remove('visible');
+        card.style.opacity = '0';
+        card.style.transform = 'translateY(10px)';
+        card.style.display = 'none';
       }
     });
   }
@@ -1221,13 +1226,15 @@
 
   document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-  // ── STAGGER PROJECT CARDS ─────────────────────────────────────────────────
+  // ── STAGGER PROJECT CARDS ON LOAD ─────────────────────────────────────────
   const cardObserver = new IntersectionObserver((entries) => {
     entries.forEach((entry, i) => {
       if (entry.isIntersecting) {
-        entry.target.style.transitionDelay = `${i * 0.08}s`;
-        entry.target.style.opacity = '1';
-        entry.target.style.transform = 'translateY(0)';
+        setTimeout(() => {
+          entry.target.style.opacity = '1';
+          entry.target.style.transform = 'translateY(0)';
+        }, i * 80);
+        cardObserver.unobserve(entry.target);
       }
     });
   }, { threshold: 0.05 });
@@ -1235,7 +1242,7 @@
   document.querySelectorAll('.project-card').forEach(card => {
     card.style.opacity = '0';
     card.style.transform = 'translateY(20px)';
-    card.style.transition = 'opacity 0.6s ease, transform 0.6s ease, box-shadow 0.3s ease';
+    card.style.transition = 'opacity 0.5s ease, transform 0.5s ease, box-shadow 0.3s ease';
     cardObserver.observe(card);
   });
 </script>
