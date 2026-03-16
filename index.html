@@ -878,12 +878,31 @@
   <div class="category-tabs">
     <button class="tab-btn active" onclick="filterProjects('all', this)">All Projects</button>
     <button class="tab-btn" onclick="filterProjects('cs', this)">Customer Success</button>
-    <button class="tab-btn" onclick="filterProjects('revenue', this)">Revenue Analytics</button>
     <button class="tab-btn" onclick="filterProjects('ops', this)">Operational Analysis</button>
+    <button class="tab-btn" onclick="filterProjects('strategy', this)">Product Strategy</button>
     <button class="tab-btn" onclick="filterProjects('collab', this)">Collaborative & AI</button>
   </div>
 
   <div class="projects-grid">
+
+    <!-- Project 0: Zillow Product Teardown -->
+    <div class="project-card visible" data-cat="strategy">
+      <span class="project-category-badge">Product Strategy</span>
+      <h3 class="project-title">Zillow Rental Search — Product Teardown & RoomMatch Proposal</h3>
+      <p class="project-desc">A self-initiated product teardown of Zillow's rental search feature — grounded in San Francisco's rental market. Maps the existing user flow, conducts a SWOT analysis, and identifies the critical gap in shared-living search. Proposes RoomMatch: a roommate-matching feature with a fully interactive 6-screen MVP prototype featuring dynamic compatibility scoring, real SF neighbourhoods and rent prices, BART and Caltrain commute tags, and a live split rent calculator.</p>
+      <div class="project-finding">"Zillow excels at helping users find where to live — but completely ignores who they will live with. RoomMatch closes that gap without users ever leaving the platform."</div>
+      <div class="project-tools">
+        <span class="tool-badge">Product Thinking</span>
+        <span class="tool-badge">SWOT Analysis</span>
+        <span class="tool-badge">User Personas</span>
+        <span class="tool-badge">Feature Design</span>
+        <span class="tool-badge">Interactive MVP</span>
+        <span class="tool-badge">SF Market Context</span>
+      </div>
+      <div class="project-links">
+        <a href="https://ann-kurian.github.io/zillow-roommatch/case_study.html" target="_blank" class="project-link">→ Case Study & Live Prototype</a>
+      </div>
+    </div>
 
     <!-- Project 1: Customer Health Command Center -->
     <div class="project-card visible" data-cat="cs">
